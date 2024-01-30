@@ -190,6 +190,7 @@ function clearCart() {
   }
 
   menuItems.forEach(menuItem => menuItem.cartQuantity = 0)
+  window.alert("Enjoy your food, big dawg 😉")
   drawCartList()
   calculateCartTotal()
 }
