@@ -120,6 +120,7 @@ const menuItems = [
 ]
 
 
+
 function addShrimpAndSteakScampiToCart() {
   // pull correct object out of array
   const shrimpAndSteakScampi = menuItems.find(menuItem => menuItem.name == 'shrimp and steak scampi')
@@ -127,6 +128,7 @@ function addShrimpAndSteakScampiToCart() {
   // increase quantity
   shrimpAndSteakScampi.cartQuantity++
   console.log('increasing quantity', shrimpAndSteakScampi.cartQuantity);
+  calculateCartTotal()
 }
 
 function addLinguineWithClamsToCart() {
@@ -135,6 +137,7 @@ function addLinguineWithClamsToCart() {
   console.log(linguineWithClams);
   // increase quantity
   linguineWithClams.cartQuantity++
+  calculateCartTotal()
 }
 
 function addMenuItemToCart(menuItemName) {
@@ -142,9 +145,25 @@ function addMenuItemToCart(menuItemName) {
   const foundMenuItem = menuItems.find(menuItem => menuItem.name == menuItemName)
   console.log('found a menu item', foundMenuItem);
   foundMenuItem.cartQuantity++
+  calculateCartTotal()
 }
 
 function calculateCartTotal() {
+  let total = 0
 
-  menuItems.forEach(menuItem => console.log(menuItem.price * menuItem.cartQuantity))
+  menuItems.forEach(menuItem => {
+    // console.log(menuItem.price * menuItem.cartQuantity)
+    total += menuItem.price * menuItem.cartQuantity
+  })
+
+  console.log('total:', total);
+
+  const cartTotalElement = document.getElementById('cartTotal')
+  cartTotalElement.innerText = total.toString()
 }
+
+function drawCartList() {
+  menuItems.forEach(menuItem => console.log(menuItem.name))
+}
+
+calculateCartTotal()
