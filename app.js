@@ -129,6 +129,7 @@ function addShrimpAndSteakScampiToCart() {
   shrimpAndSteakScampi.cartQuantity++
   console.log('increasing quantity', shrimpAndSteakScampi.cartQuantity);
   calculateCartTotal()
+  drawCartList()
 }
 
 function addLinguineWithClamsToCart() {
@@ -138,6 +139,7 @@ function addLinguineWithClamsToCart() {
   // increase quantity
   linguineWithClams.cartQuantity++
   calculateCartTotal()
+  drawCartList()
 }
 
 function addMenuItemToCart(menuItemName) {
@@ -146,6 +148,7 @@ function addMenuItemToCart(menuItemName) {
   console.log('found a menu item', foundMenuItem);
   foundMenuItem.cartQuantity++
   calculateCartTotal()
+  drawCartList()
 }
 
 function calculateCartTotal() {
@@ -163,7 +166,13 @@ function calculateCartTotal() {
 }
 
 function drawCartList() {
-  menuItems.forEach(menuItem => console.log(menuItem.name))
+  let names = ''
+  menuItems.forEach(menuItem => {
+    names += `<li>${menuItem.name} ${menuItem.cartQuantity} $${menuItem.price}</li>`
+  })
+
+  const cartItemsElement = document.getElementById('cartItems')
+  cartItemsElement.innerHTML = names
 }
 
 calculateCartTotal()
