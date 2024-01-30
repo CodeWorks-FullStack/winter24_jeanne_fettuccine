@@ -143,3 +143,8 @@ function addMenuItemToCart(menuItemName) {
   console.log('found a menu item', foundMenuItem);
   foundMenuItem.cartQuantity++
 }
+
+function calculateCartTotal() {
+
+  menuItems.forEach(menuItem => console.log(menuItem.price * menuItem.cartQuantity))
+}
