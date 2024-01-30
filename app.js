@@ -125,6 +125,21 @@ function addShrimpAndSteakScampiToCart() {
   const shrimpAndSteakScampi = menuItems.find(menuItem => menuItem.name == 'shrimp and steak scampi')
   console.log('got the scampi', shrimpAndSteakScampi);
   // increase quantity
-  // shrimpAndSteakScampi.quantity++
-  // console.log(shrimpAndSteakScampi);
+  shrimpAndSteakScampi.cartQuantity++
+  console.log('increasing quantity', shrimpAndSteakScampi.cartQuantity);
+}
+
+function addLinguineWithClamsToCart() {
+  // pull correct object out of array
+  const linguineWithClams = menuItems.find(menuItem => menuItem.name == 'linguine with clams')
+  console.log(linguineWithClams);
+  // increase quantity
+  linguineWithClams.cartQuantity++
+}
+
+function addMenuItemToCart(menuItemName) {
+  console.log('menu item name', menuItemName);
+  const foundMenuItem = menuItems.find(menuItem => menuItem.name == menuItemName)
+  console.log('found a menu item', foundMenuItem);
+  foundMenuItem.cartQuantity++
 }
