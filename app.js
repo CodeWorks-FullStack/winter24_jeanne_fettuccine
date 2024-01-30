@@ -167,12 +167,31 @@ function calculateCartTotal() {
 
 function drawCartList() {
   let names = ''
-  menuItems.forEach(menuItem => {
+
+  const menuItemsWithQuantity = menuItems.filter(menuItem => menuItem.cartQuantity > 0)
+  // const menuItemsWithQuantity = menuItems.filter(menuItem => menuItem.cartQuantity != 0)
+  // const menuItemsWithQuantity = menuItems.filter(menuItem => menuItem.cartQuantity)
+  console.log('filtered menu items', menuItemsWithQuantity);
+
+  menuItemsWithQuantity.forEach(menuItem => {
     names += `<li>${menuItem.name} ${menuItem.cartQuantity} $${menuItem.price}</li>`
   })
 
   const cartItemsElement = document.getElementById('cartItems')
   cartItemsElement.innerHTML = names
+}
+
+function clearCart() {
+  const wantsToClearCart = window.confirm("Are you sure that you're ready to check out?")
+
+  if (!wantsToClearCart) {  // if (wantsToClearCart == false) {
+    // NOTE HARD STOP
+    return
+  }
+
+  menuItems.forEach(menuItem => menuItem.cartQuantity = 0)
+  drawCartList()
+  calculateCartTotal()
 }
 
 calculateCartTotal()
